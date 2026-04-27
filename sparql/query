@@ -1,1 +1,41 @@
 
+------------------------------------------------------------------------
+1. Query for CQ1: Products by Category
+Use this to show how the ontology identifies specific types of clothing.
+------------------------------------------------------------------------
+PREFIX fashiono: <http://w3id.org/fashion#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Which products belong to the category 'TopWear'?
+SELECT ?product ?productName
+WHERE {
+    ?product a fashiono:TopWear ;
+             fashiono:productName ?productName .
+}
+-------------------------------------------------------------------------------
+2. Query for CQ3 & CQ4: Material and Color Filter
+This demonstrates multi-attribute filtering, a core "Intended Use" of your ontology.
+-------------------------------------------------------------------------------
+PREFIX fashiono: <http://w3id.org/fashion#>
+
+# Find products made of Cotton that are available in Black
+SELECT ?productName ?sku
+WHERE {
+    ?product fashiono:productName ?productName ;
+             fashiono:sku ?sku ;
+             fashiono:hasMaterial fashiono:Cotton ;
+             fashiono:hasColor fashiono:ColorBlack .
+}
+---------------------------------------------------------------------------
+3. Query for CQ6: Price Range by Brand
+This uses SPARQL aggregates to show a more advanced technical skill level.
+------------------------------------------------------------------------------
+PREFIX fashiono: <http://w3id.org/fashion#>
+
+# What is the price range (Min/Max) for Zara products?
+SELECT (MIN(?price) AS ?minPrice) (MAX(?price) AS ?maxPrice)
+WHERE {
+    ?product fashiono:hasBrand fashiono:BrandZara ;
+             fashiono:hasListing ?listing .
+    ?listing fashiono:price ?price .
+}
