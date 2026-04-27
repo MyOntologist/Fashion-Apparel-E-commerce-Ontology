@@ -1,0 +1,445 @@
+@prefix fashiono: <http://w3id.org/fashion#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .             
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <http://schema.org/> .
+
+# This ABOX import the TBox so all the rules apply here
+<http://w3id.org/fashion> a owl:Ontology ;
+    rdfs:label "Fashion Ontology"@en ;
+    rdfs:comment "An ontology for representing fashion items, their attributes, and relationships."@en ;
+    owl:imports <http://w3id.org/fashion/tbox> .
+
+## Brands
+
+fashiono:BrandZara 
+    a fashiono:Brand ;
+    fashiono:brandName "Zara" .
+
+fashiono:BrandNike
+    a fashiono:Brand ;
+    fashiono:brandName "Nike" .
+
+# Fixed: Removed '&' from the URI identifier
+fashiono:BrandHM 
+    a fashiono:Brand ;
+    fashiono:brandName "HM" .
+
+fashiono:BrandGucci 
+    a fashiono:Brand ;
+    fashiono:brandName "Gucci" .
+
+fashiono:BrandLevis 
+    a fashiono:Brand ;
+    fashiono:brandName "Levi's" .
+
+#collections
+
+fashiono:collection_zara_ss2026
+    a fashiono:Collection ;
+    fashiono:collectionName "Zara Spring/Summer 2026" ;
+    fashiono:collectionYear "2026"^^xsd:gYear ;
+    fashiono:collectionaByBrand fashiono:BrandZara .
+
+fashiono:collection_nike_fw2025
+    a fashiono:Collection ;
+    fashiono:collectionName "Nike Fall/Winter 2025" ;
+    fashiono:collectionYear "2025"^^xsd:gYear ;
+    fashiono:collectionaByBrand fashiono:BrandNike .
+
+fashiono:collection_hm_ss2026
+    a fashiono:Collection ;
+    fashiono:collectionName "HM Spring/Summer 2026" ;
+    fashiono:collectionYear "2026"^^xsd:gYear ;
+    fashiono:collectionByBrand fashiono:BrandHM .  
+    
+## Colors
+
+fashiono:ColorNavyBlue
+    a fashiono:Color ;
+    fashiono:colorName "Navy Blue" ;
+    fashiono:colorHexCode "#1F305E" .
+
+fashiono:ColorIvory
+    a fashiono:Color ;
+    fashiono:colorName "Ivory" ;
+    fashiono:colorHexCode "#FFFFF0" .
+
+fashiono:ColorBlack
+    a fashiono:Color ;
+    fashiono:colorName "Black" ;
+    fashiono:colorHexCode "#000000" .
+
+fashiono:ColorWhite
+    a fashiono:Color ;
+    fashiono:colorName "White" ;
+    fashiono:colorHexCode "#FFFFFF" .
+
+fashiono:ColorOliveGreen
+    a fashiono:Color ;
+    fashiono:colorName "Olive Green" ;
+    fashiono:colorHexCode "#6B7C45" .
+
+fashiono:ColorDustyRose
+    a fashiono:Color ;
+    fashiono:colorName "Dusty Rose" ;
+    fashiono:colorHexCode "#C9A0A0" .
+
+fashiono:ColorIndigoBlue
+    a fashiono:Color ;
+    fashiono:colorName "Indigo Blue" ;
+    fashiono:colorHexCode "#3D4F9F" .
+
+fashiono:ColorCoral
+    a fashiono:Color ;
+    fashiono:colorName "Coral" ;
+    fashiono:colorHexCode "#FF6B6B" .
+
+
+## PRODUCTS -- Clothing
+
+# Product 1 -- a linen dress from Zara
+fashiono:Product_001
+    a fashiono:FullBodyWear ;
+    fashiono:productName "Coastal Linen Slip Dress" ;
+    fashiono:productDescription "A lightweight linen dress with adjustable straps. Great for summer days at the beach or in the city." ;
+    fashiono:sku "ZR-DRESS-001" ;
+    fashiono:hasBrand fashiono:BrandZara ;
+    fashiono:hasMaterial fashiono:Linen ;
+    fashiono:hasColor fashiono:ColorNavyBlue ;
+    fashiono:hasColor fashiono:ColorIvory ;
+    fashiono:hasSize fashiono:SizeXS ;
+    fashiono:hasSize fashiono:SizeS ;
+    fashiono:hasSize fashiono:SizeM ;
+    fashiono:hasSize fashiono:SizeL ;
+    fashiono:targetGender fashiono:Women ;
+    fashiono:suitableForSeason fashiono:Summer ;
+    fashiono:hasStyle fashiono:Casual ;
+    fashiono:hasStyle fashiono:BeachWear ;
+    fashiono:belongsToCollection fashiono:Collection_Zara_SS2025 ;
+    fashiono:hasListing fashiono:Listing_001_Navy ;
+    fashiono:hasListing fashiono:Listing_001_Ivory .
+
+# Product 2 -- a cotton t-shirt from HM
+fashiono:Product_002
+    a fashiono:TopWear ;
+    fashiono:productName "Classic Cotton Crew Tee" ;
+    fashiono:productDescription "A simple everyday cotton t-shirt. Relaxed fit, soft feel, goes with everything." ;
+    fashiono:sku "HM-TOP-002" ;
+    fashiono:hasBrand fashiono:BrandHM ;
+    fashiono:hasMaterial fashiono:Cotton ;
+    fashiono:hasColor fashiono:ColorWhite ;
+    fashiono:hasColor fashiono:ColorBlack ;
+    fashiono:hasColor fashiono:ColorOliveGreen ;
+    fashiono:hasSize fashiono:SizeS ;
+    fashiono:hasSize fashiono:SizeM ;
+    fashiono:hasSize fashiono:SizeL ;
+    fashiono:hasSize fashiono:SizeXL ;
+    fashiono:targetGender fashiono:Unisex ;
+    fashiono:suitableForSeason fashiono:AllSeason ;
+    fashiono:hasStyle fashiono:Casual ;
+    fashiono:belongsToCollection fashiono:Collection_HM_SS2025 ;
+    fashiono:hasListing fashiono:Listing_002_White ;
+    fashiono:hasListing fashiono:Listing_002_Black .
+
+# Product 3 -- denim jeans from Levis
+fashiono:Product_003
+    a fashiono:BottomWear ;
+    fashiono:productName "Levi's 501 Original Fit Jeans" ;
+    fashiono:productDescription "The iconic straight leg jeans. Button fly, rigid denim, timeless cut." ;
+    fashiono:sku "LV-JEANS-003" ;
+    fashiono:hasBrand fashiono:BrandLevis ;
+    fashiono:hasMaterial fashiono:Denim ;
+    fashiono:hasColor fashiono:ColorIndigoBlue ;
+    fashiono:hasColor fashiono:ColorBlack ;
+    fashiono:hasSize fashiono:SizeS ;
+    fashiono:hasSize fashiono:SizeM ;
+    fashiono:hasSize fashiono:SizeL ;
+    fashiono:hasSize fashiono:SizeXL ;
+    fashiono:targetGender fashiono:Men ;
+    fashiono:suitableForSeason fashiono:AllSeason ;
+    fashiono:hasStyle fashiono:Casual ;
+    fashiono:hasStyle fashiono:Streetwear ;
+    fashiono:hasListing fashiono:Listing_003_Indigo ;
+    fashiono:hasListing fashiono:Listing_003_Black .
+
+# Product 4 -- Nike running jacket
+fashiono:Product_004
+    a fashiono:Activewear ;
+    fashiono:productName "Nike Therma-FIT Running Jacket" ;
+    fashiono:productDescription "Lightweight running jacket with thermal lining. Keeps you warm on cold morning runs." ;
+    fashiono:sku "NK-JACKET-004" ;
+    fashiono:hasBrand fashiono:BrandNike ;
+    fashiono:hasMaterial fashiono:Nylon ;
+    fashiono:hasColor fashiono:ColorBlack ;
+    fashiono:hasColor fashiono:ColorOliveGreen ;
+    fashiono:hasSize fashiono:SizeS ;
+    fashiono:hasSize fashiono:SizeM ;
+    fashiono:hasSize fashiono:SizeL ;
+    fashiono:hasSize fashiono:SizeXL ;
+    fashiono:hasSize fashiono:SizeXXL ;
+    fashiono:targetGender fashiono:Unisex ;
+    fashiono:suitableForSeason fashiono:Autumn ;
+    fashiono:suitableForSeason fashiono:Winter ;
+    fashiono:hasStyle fashiono:Sport ;
+    fashiono:belongsToCollection fashiono:Collection_Nike_AW2025 ;
+    fashiono:hasListing fashiono:Listing_004_Black .
+
+# Product 5 -- Zara wool coat
+fashiono:Product_005
+    a fashiono:OuterWear ;
+    fashiono:productName "Oversized Wool Blend Coat" ;
+    fashiono:productDescription "A classic oversized coat in a soft wool blend. Ideal for winter layering." ;
+    fashiono:sku "ZR-COAT-005" ;
+    fashiono:hasBrand fashiono:BrandZara ;
+    fashiono:hasMaterial fashiono:Wool ;
+    fashiono:hasColor fashiono:ColorBlack ;
+    fashiono:hasColor fashiono:ColorIvory ;
+    fashiono:hasSize fashiono:SizeXS ;
+    fashiono:hasSize fashiono:SizeS ;
+    fashiono:hasSize fashiono:SizeM ;
+    fashiono:hasSize fashiono:SizeL ;
+    fashiono:targetGender fashiono:Women ;
+    fashiono:suitableForSeason fashiono:Winter ;
+    fashiono:hasStyle fashiono:Formal ;
+    fashiono:hasStyle fashiono:Casual ;
+    fashiono:belongsToCollection fashiono:Collection_Zara_SS2025 ;
+    fashiono:hasListing fashiono:Listing_005_Black .
+
+
+## PRODUCTS -- Footwear
+
+# Product 6 -- Nike sneakers
+fashiono:Product_006
+    a fashiono:Sneakers ;
+    fashiono:productName "Nike Air Max 270 React" ;
+    fashiono:productDescription "Lightweight everyday sneakers with Air Max cushioning. Very comfortable for all day wear." ;
+    fashiono:sku "NK-SNKR-006" ;
+    fashiono:hasBrand fashiono:BrandNike ;
+    fashiono:hasMaterial fashiono:Nylon ;
+    fashiono:hasColor fashiono:ColorWhite ;
+    fashiono:hasColor fashiono:ColorBlack ;
+    fashiono:hasSize fashiono:SizeS ;
+    fashiono:hasSize fashiono:SizeM ;
+    fashiono:hasSize fashiono:SizeL ;
+    fashiono:targetGender fashiono:Unisex ;
+    fashiono:suitableForSeason fashiono:AllSeason ;
+    fashiono:hasStyle fashiono:Sport ;
+    fashiono:hasStyle fashiono:Casual ;
+    fashiono:belongsToCollection fashiono:Collection_Nike_AW2025 ;
+    fashiono:hasListing fashiono:Listing_006_White .
+
+# Product 7 -- Zara heels
+fashiono:Product_007
+    a fashiono:Heels ;
+    fashiono:productName "Strappy Block Heel Sandals" ;
+    fashiono:productDescription "Elegant block heels with thin ankle straps. Great for evening events or dinners." ;
+    fashiono:sku "ZR-HEEL-007" ;
+    fashiono:hasBrand fashiono:BrandZara ;
+    fashiono:hasMaterial fashiono:Leather ;
+    fashiono:hasColor fashiono:ColorBlack ;
+    fashiono:hasColor fashiono:ColorDustyRose ;
+    fashiono:hasSize fashiono:SizeS ;
+    fashiono:hasSize fashiono:SizeM ;
+    fashiono:hasSize fashiono:SizeL ;
+    fashiono:targetGender fashiono:Women ;
+    fashiono:suitableForSeason fashiono:Summer ;
+    fashiono:suitableForSeason fashiono:Spring ;
+    fashiono:hasStyle fashiono:EveningWear ;
+    fashiono:hasStyle fashiono:Formal ;
+    fashiono:belongsToCollection fashiono:Collection_Zara_SS2025 ;
+    fashiono:hasListing fashiono:Listing_007_Black .
+
+## PRODUCTS -- Accessories
+
+# Product 8 -- Gucci bag
+fashiono:Product_008
+    a fashiono:Bag ;
+    fashiono:productName "Gucci Soho Leather Disco Bag" ;
+    fashiono:productDescription "Compact crossbody bag in soft pebbled leather with interlocking G charm." ;
+    fashiono:sku "GC-BAG-008" ;
+    fashiono:hasBrand fashiono:BrandGucci ;
+    fashiono:hasMaterial fashiono:Leather ;
+    fashiono:hasColor fashiono:ColorBlack ;
+    fashiono:hasSize fashiono:SizeS ;
+    fashiono:targetGender fashiono:Women ;
+    fashiono:suitableForSeason fashiono:AllSeason ;
+    fashiono:hasStyle fashiono:Formal ;
+    fashiono:hasStyle fashiono:EveningWear ;
+    fashiono:hasListing fashiono:Listing_008_Black .
+
+# Product 9 -- HM scarf
+fashiono:Product_009
+    a fashiono:Scarf ;
+    fashiono:productName "Soft Knit Winter Scarf" ;
+    fashiono:productDescription "A chunky knitted scarf in warm wool blend. Wide and long enough to wrap twice." ;
+    fashiono:sku "HM-SCARF-009" ;
+    fashiono:hasBrand fashiono:BrandHM ;
+    fashiono:hasMaterial fashiono:Wool ;
+    fashiono:hasColor fashiono:ColorOliveGreen ;
+    fashiono:hasColor fashiono:ColorNavyBlue ;
+    fashiono:hasSize fashiono:SizeS ;
+    fashiono:targetGender fashiono:Unisex ;
+    fashiono:suitableForSeason fashiono:Winter ;
+    fashiono:suitableForSeason fashiono:Autumn ;
+    fashiono:hasStyle fashiono:Casual ;
+    fashiono:hasListing fashiono:Listing_009_Olive .
+
+
+## PRODUCT LISTINGS
+# price, currency and stock for each product variant
+
+fashiono:Listing_001_Navy
+    a fashiono:ProductListing ;
+    fashiono:price 49.99 ;
+    fashiono:currency "USD" ;
+    fashiono:stockQuantity 83 ;
+    fashiono:hasReview fashiono:Review_001 ;
+    fashiono:hasReview fashiono:Review_002 .
+
+fashiono:Listing_001_Ivory
+    a fashiono:ProductListing ;
+    fashiono:price 49.99 ;
+    fashiono:currency "USD" ;
+    fashiono:stockQuantity 41 .
+
+fashiono:Listing_002_White
+    a fashiono:ProductListing ;
+    fashiono:price 12.99 ;
+    fashiono:currency "USD" ;
+    fashiono:stockQuantity 200 ;
+    fashiono:hasReview fashiono:Review_003 .
+
+fashiono:Listing_002_Black
+    a fashiono:ProductListing ;
+    fashiono:price 12.99 ;
+    fashiono:currency "USD" ;
+    fashiono:stockQuantity 185 .
+
+fashiono:Listing_003_Indigo
+    a fashiono:ProductListing ;
+    fashiono:price 89.99 ;
+    fashiono:currency "USD" ;
+    fashiono:stockQuantity 60 ;
+    fashiono:hasReview fashiono:Review_004 .
+
+fashiono:Listing_003_Black
+    a fashiono:ProductListing ;
+    fashiono:price 89.99 ;
+    fashiono:currency "USD" ;
+    fashiono:stockQuantity 45 .
+
+fashiono:Listing_004_Black
+    a fashiono:ProductListing ;
+    fashiono:price 75.00 ;
+    fashiono:currency "USD" ;
+    fashiono:stockQuantity 120 ;
+    fashiono:hasReview fashiono:Review_005 .
+
+fashiono:Listing_005_Black
+    a fashiono:ProductListing ;
+    fashiono:price 149.00 ;
+    fashiono:currency "USD" ;
+    fashiono:stockQuantity 30 .
+
+fashiono:Listing_006_White
+    a fashiono:ProductListing ;
+    fashiono:price 130.00 ;
+    fashiono:currency "USD" ;
+    fashiono:stockQuantity 55 ;
+    fashiono:hasReview fashiono:Review_006 .
+
+fashiono:Listing_007_Black
+    a fashiono:ProductListing ;
+    fashiono:price 65.00 ;
+    fashiono:currency "USD" ;
+    fashiono:stockQuantity 22 .
+
+fashiono:Listing_008_Black
+    a fashiono:ProductListing ;
+    fashiono:price 1200.00 ;
+    fashiono:currency "USD" ;
+    fashiono:stockQuantity 8 .
+
+fashiono:Listing_009_Olive
+    a fashiono:ProductListing ;
+    fashiono:price 19.99 ;
+    fashiono:currency "USD" ;
+    fashiono:stockQuantity 95 .
+
+## CUSTOMERS
+
+fashiono:Customer_Alice
+    a fashiono:Customer ;
+    schema:name "Alice M." .
+
+fashiono:Customer_James
+    a fashiono:Customer ;
+    schema:name "James K." .
+
+fashiono:Customer_Sara
+    a fashiono:Customer ;
+    schema:name "Sara L." .
+
+fashiono:Customer_Omar
+    a fashiono:Customer ;
+    schema:name "Omar B." .
+
+
+## REVIEWS
+
+fashiono:Review_001
+    a fashiono:Review ;
+    fashiono:rating 4.8 ;
+    fashiono:reviewText "Absolutely love this dress. Lightweight and perfect for summer. The linen feels very high quality." ;
+    fashiono:writtenBy fashiono:Customer_Alice .
+
+fashiono:Review_002
+    a fashiono:Review ;
+    fashiono:rating 4.2 ;
+    fashiono:reviewText "Nice dress but runs slightly small. I would recommend sizing up." ;
+    fashiono:writtenBy fashiono:Customer_Sara .
+
+fashiono:Review_003
+    a fashiono:Review ;
+    fashiono:rating 4.5 ;
+    fashiono:reviewText "Great basic tee. Washes well and does not shrink. Good value for the price." ;
+    fashiono:writtenBy fashiono:Customer_James .
+
+fashiono:Review_004
+    a fashiono:Review ;
+    fashiono:rating 5.0 ;
+    fashiono:reviewText "These are proper Levis 501s. Classic fit, great denim quality. Will buy again." ;
+    fashiono:writtenBy fashiono:Customer_Omar .
+
+fashiono:Review_005
+    a fashiono:Review ;
+    fashiono:rating 4.6 ;
+    fashiono:reviewText "Very warm and not too heavy. Wore it on a 5km run in 5 degrees and stayed comfortable." ;
+    fashiono:writtenBy fashiono:Customer_James .
+
+fashiono:Review_006
+    a fashiono:Review ;
+    fashiono:rating 4.0 ;
+    fashiono:reviewText "Comfortable sneakers. Took a few days to break in but now they feel great." ;
+    fashiono:writtenBy fashiono:Customer_Alice .
+
+## ORDERS
+
+fashiono:Order_001
+    a fashiono:Order ;
+    fashiono:includesProduct fashiono:Listing_001_Navy ;
+    fashiono:includesProduct fashiono:Listing_009_Olive ;
+    fashiono:placedBy fashiono:Customer_Alice .
+
+fashiono:Order_002
+    a fashiono:Order ;
+    fashiono:includesProduct fashiono:Listing_003_Indigo ;
+    fashiono:includesProduct fashiono:Listing_006_White ;
+    fashiono:placedBy fashiono:Customer_Omar .
+
+fashiono:Order_003
+    a fashiono:Order ;
+    fashiono:includesProduct fashiono:Listing_002_White ;
+    fashiono:includesProduct fashiono:Listing_002_Black ;
+    fashiono:placedBy fashiono:Customer_James .
