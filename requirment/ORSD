@@ -1,1 +1,50 @@
+# Ontology Requirements Specification Document (ORSD)
 
+## 1. Purpose
+The purpose of the Fashion & Apparel E-Commerce Ontology (FashionO) is to provide a shared vocabulary for fashion products sold online. The ontology should hold all knowledge needed about products, brands, materials, colors, sizes, seasons and styles. It should allow users to search and filter products using specific criteria such as material, gender, season or price range.
+
+## 2. Scope
+The focus of the ontology is fashion products and their attributes. This includes:
+* **Categories**: Clothing, footwear, and accessories.
+* **Attributes**: Brands, materials, colors, sizes, seasons, styles, and collections.
+* **Commerce Layer**: Product listings, reviews, customers, and orders.
+
+**Out of Scope**: Payment processing, shipping, and logistics.
+
+## 3. Implementation Language
+* **Language**: Web Ontology Language (OWL 2 DL)
+* **Format**: Turtle (.ttl)
+
+## 4. Intended End-Users
+* Online shoppers looking for specific filters (material, color, size, etc.).
+* Developers building fashion e-commerce search and recommendation systems.
+
+## 5. Intended Uses
+* Searching for fashion products based on multiple filter criteria.
+* Providing structured product information for recommendation systems and semantic search tools.
+* Allowing cross-platform interoperability between different fashion retail catalogs.
+* Supporting analytics queries (e.g., finding best-rated products or lowest-priced listings).
+
+## 6. Ontology Requirements
+
+### a. Non-Functional Requirements (NFRs)
+* **NFR1**: Support English language labels and descriptions.
+* **NFR2**: Written in OWL 2 DL using Turtle format.
+* **NFR3**: Reuse terms from `schema.org` and `GoodRelations` where possible.
+* **NFR4**: Published following FAIR principles.
+* **NFR5**: Use semantic versioning starting from version 1.0.0.
+* **NFR6**: Released under Creative Commons CC BY 4.0 license.
+
+### b. Functional Requirements (Competency Questions)
+The ontology must be able to answer the following:
+* **CQ1**: Which products belong to a specific category such as Dresses or Sneakers?
+* **CQ2**: Which sizes are available for a specific product?
+* **CQ3**: Which products are made of a specific material such as Cotton or Silk?
+* **CQ4**: Which products are available in a specific color?
+* **CQ5**: Which products are suitable for a specific gender?
+* **CQ6**: What is the price range of products from a specific brand?
+* **CQ7**: Which products belong to a specific seasonal collection?
+* **CQ8**: Which products are appropriate for a specific season such as Winter?
+* **CQ9**: Which products have an average customer rating above 4.0?
+* **CQ10**: Which products are available in both a specific size and a specific color?
+* **CQ11**: What are all products from a brand within a specific category?
