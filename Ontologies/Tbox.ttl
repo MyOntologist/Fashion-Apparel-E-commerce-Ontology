@@ -1,0 +1,502 @@
+@prefix fashiono: <http://w3id.org/fashion#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .      
+@prefix schema: <http://schema.org/> .
+@prefix gr: <http://purl.org/goodrelations/v1#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+
+#ontology metadata
+<http://w3id.org/fashion>
+     a owl:Ontology ;
+     dcterms:title "Fashion & Apparel E-commerce Ontology"@en ;
+     dcterms:description "An ontology for fashion product sold online. Cover clothing, footwear, and accessories along with their attributes and relationships." ;
+     dcterms:creator "Afsara" ;
+     dcterms:created "2024-06-01T00:00:00Z"^^xsd:dateTime ;
+     dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
+     vann:preferredNamespacePrefix "fashiono" ;
+     vann:preferredNamespaceUri "http://w3id.org/fashion#" .
+
+     #Top level classes-everything is a fashion product
+        fashiono:FashionProduct a owl:Class ;
+            rdfs:label "Fashion Product"@en ;
+            rdfs:comment "A product that is related to fashion, including clothing, footwear, and accessories."@en ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+    #clothing and its subtypes
+        fashiono:Clothing a owl:Class ;
+            rdfs:label "Clothing"@en ;
+            rdfs:comment "Garments worn on the body, including tops, bottoms, dresses, outerwear, and undergarments."@en ;
+            owl:disjointWith fashiono:Footwear, fashiono:Accessory ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:TopWear a owl:Class ;
+            rdfs:label "Topwear"@en ;
+            rdfs:comment "Clothing items worn on the upper body, such as shirts, blouses, t-shirts, and sweaters."@en ;
+            rdfs:subClassOf fashiono:Clothing ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:BottomWear a owl:Class ;
+            rdfs:label "Bottomwear"@en ;                        
+            rdfs:comment "Clothing items worn on the lower body, such as pants, skirts, shorts, and jeans."@en ;
+            rdfs:subClassOf fashiono:Clothing ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:FullBodyWear a owl:Class ;
+            rdfs:label "Full Body Wear"@en ;                        
+            rdfs:comment "Clothing items that cover the entire body, such as dresses, jumpsuits, and rompers."@en ;
+            rdfs:subClassOf fashiono:Clothing ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:Outerwear a owl:Class ;
+            rdfs:label "Outerwear"@en ;         
+            rdfs:comment "Clothing items worn over other clothes for warmth or protection, such as jackets, coats, and blazers."@en ;
+            rdfs:subClassOf fashiono:Clothing ;     
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:UnderWear  a owl:Class ;
+            rdfs:label "Underwear"@en ;         
+            rdfs:comment "Clothing items worn under other clothes, such as bras, panties, boxers, and undershirts."@en ;
+            rdfs:subClassOf fashiono:Clothing ;     
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:ActiveWear a owl:Class ;
+            rdfs:label "Activewear"@en ;         
+            rdfs:comment "Clothing items designed for physical activity, such as sports bras, leggings, and athletic shorts."@en ;
+            rdfs:subClassOf fashiono:Clothing ;     
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+    #footwear and its subtypes
+        fashiono:Footwear a owl:Class ;
+            rdfs:label "Footwear"@en ;
+            rdfs:comment "Items worn on the feet, including shoes, boots, sandals, and sneakers."@en ;
+            owl:disjointWith fashiono:Clothing, fashiono:Accessory ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+    
+        fashiono:sneakers a owl:Class ;
+            rdfs:label "Sneakers"@en ;
+            rdfs:comment "Casual shoes designed for comfort and style, often with rubber soles."@en ;
+            rdfs:subClassOf fashiono:Footwear ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:Boots a owl:Class ;
+            rdfs:label "Boots"@en ;         
+            rdfs:comment "Footwear that covers the foot and ankle, and sometimes extends up the leg."@en ;
+            rdfs:subClassOf fashiono:Footwear ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:Sandals a owl:Class ;
+            rdfs:label "Sandals"@en ;                   
+            rdfs:comment "Open-toed footwear that consists of a sole held to the foot by straps."@en ;
+            rdfs:subClassOf fashiono:Footwear ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:Heels a owl:Class ;
+            rdfs:label "Heels"@en ;         
+            rdfs:comment "Footwear with a raised heel, often worn for formal occasions."@en ;
+            rdfs:subClassOf fashiono:Footwear ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:Flats a owl:Class ;
+            rdfs:label "Flats"@en ;         
+            rdfs:comment "Footwear with a flat sole, often designed for comfort."@en ;
+            rdfs:subClassOf fashiono:Footwear ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+    #Accessories and its subtypes
+
+        fashiono:Accessory a owl:Class ;
+            rdfs:label "Accessory"@en ;
+            rdfs:comment "Items that complement or enhance an outfit, such as bags, jewelry, hats, and scarves."@en ;
+            owl:disjointWith fashiono:Clothing, fashiono:Footwear ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:Bags a owl:Class ;
+            rdfs:label "Bags"@en ;         
+            rdfs:comment "Containers used to carry personal items, such as handbags, backpacks, and totes."@en ;
+            rdfs:subClassOf fashiono:Accessory ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:Jewelry a owl:Class ;
+            rdfs:label "Jewelry"@en ;         
+            rdfs:comment "Decorative items worn for personal adornment, such as necklaces, bracelets, earrings, and rings."@en ;
+            rdfs:subClassOf fashiono:Accessory ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:Hatwear a owl:Class ;
+            rdfs:label "Hatwear"@en ;         
+            rdfs:comment "Headwear that can serve both functional and decorative purposes, such as caps, beanies, and fedoras."@en ;
+            rdfs:subClassOf fashiono:Accessory ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:Scarf a owl:Class ;
+            rdfs:label "Scarf"@en ;         
+            rdfs:comment "A piece of fabric worn around the neck or head for warmth or fashion."@en ;
+            rdfs:subClassOf fashiono:Accessory ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:Belts a owl:Class ;
+            rdfs:label "Belts"@en ;         
+            rdfs:comment "Straps worn around the waist to hold up clothing or for decorative purposes."@en ;
+            rdfs:subClassOf fashiono:Accessory ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:Eyewear a owl:Class ;
+            rdfs:label "Eyewear"@en ;         
+            rdfs:comment "Items worn on the face to protect the eyes or for fashion, such as sunglasses and prescription glasses."@en ;
+            rdfs:subClassOf fashiono:Accessory ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:Watches a owl:Class ;
+            rdfs:label "Watches"@en ;         
+            rdfs:comment "Timepieces worn on the wrist for both functional and decorative purposes."@en ;
+            rdfs:subClassOf fashiono:Accessory ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+    #Attribute classes- used to describe products           
+
+        fashiono:Color a owl:Class ;
+            rdfs:label "Color"@en ;         
+            rdfs:comment "The color of a fashion product, such as red, blue, or black."@en ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:Material a owl:Class ;
+            rdfs:label "Material"@en ;         
+            rdfs:comment "The material composition of a fashion product, such as cotton, leather, or polyester."@en ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:Brand a owl:Class ;
+            rdfs:label "Brand"@en ;         
+            rdfs:comment "The brand or designer associated with a fashion product."@en ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+    #size has subtypes depending on the product category
+        fashiono:Size a owl:Class ;
+            rdfs:label "Size"@en ;         
+            rdfs:comment "The size of a fashion product, which can vary based on the type of product."@en ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:ClothingSize a owl:Class ;
+            rdfs:label "Clothing Size"@en ;         
+            rdfs:comment "Sizes for clothing items, such as S, M, L, XL, or numeric sizes like 4, 6, 8."@en ;
+            rdfs:subClassOf fashiono:Size ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:shoesSize a owl:Class ;
+            rdfs:label "Shoes Size"@en ;         
+            rdfs:comment "Sizes for footwear, which can be numeric (e.g., 7, 8, 9) or alphanumeric (e.g., 7.5, 8.5)."@en ;
+            rdfs:subClassOf fashiono:Size ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:Gender
+            a owl:Class ;
+            rdfs:label "Gender"@en ;
+            rdfs:comment "who the product is designed for --Women, Men, Kids, ect."@en ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:season
+            a owl:Class ;
+            rdfs:label "Season"@en ;
+            rdfs:comment "the season the product is designed for --Spring, Summer, Fall, Winter."@en ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:style
+            a owl:Class ;
+            rdfs:label "Style"@en ;
+            rdfs:comment "the style of the product --Casual, Formal, Business, ect."@en ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .    
+        
+        fashiono:collection
+            a owl:Class ;
+            rdfs:label "Collection"@en ;
+            rdfs:comment "the collection the product belongs to --Spring 2024, Fall 2024, ect."@en ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+#commerce classes-the buying and selling layer
+        fashiono:productListing a owl:Class ;
+            rdfs:label "Product Listing"@en ;
+            rdfs:comment "A specific listing of a fashion product for sale, which may include details like price, availability, and seller information."@en ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:review a owl:Class ;
+            rdfs:label "Review"@en ;
+            rdfs:comment "A review of a fashion product, which may include a rating, comments, and the reviewer's information."@en ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:customer a owl:Class ;
+            rdfs:label "Customer"@en ;
+            rdfs:comment "A person who purchases fashion products."@en ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:order a owl:Class ;
+            rdfs:label "Order"@en ;
+            rdfs:comment "An order placed by a customer for one or more fashion products."@en ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+#objective property - relationship between classes
+
+        fashiono:hasColor a owl:ObjectProperty ;
+            rdfs:label "has color"@en ;
+            rdfs:comment "Relates a fashion product to its color."@en ;
+            rdfs:domain fashiono:FashionProduct ;
+            rdfs:range fashiono:Color ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:hasMaterial a owl:ObjectProperty ;
+            rdfs:label "has material"@en ;
+            rdfs:comment "Relates a fashion product to its material composition."@en ;
+            rdfs:domain fashiono:FashionProduct ;
+            rdfs:range fashiono:Material ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:hasBrand a owl:ObjectProperty ;
+            rdfs:label "has brand"@en ;
+            rdfs:comment "Relates a fashion product to its brand or designer."@en ;
+            rdfs:domain fashiono:FashionProduct ;
+            rdfs:range fashiono:Brand ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:hasSize a owl:ObjectProperty ;
+            rdfs:label "has size"@en ;      
+            rdfs:comment "Relates a fashion product to its size."@en ;
+            rdfs:domain fashiono:FashionProduct ;
+            rdfs:range fashiono:Size ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:targetGender a owl:ObjectProperty ;
+            rdfs:label "target gender"@en ;
+            rdfs:comment "Relates a fashion product to the gender it is designed for."@en ;
+            rdfs:domain fashiono:FashionProduct ;
+            rdfs:range fashiono:Gender ;            
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:suitableForSeason a owl:ObjectProperty ;
+            rdfs:label "suitable for season"@en ;
+            rdfs:comment "Relates a fashion product to the season it is suitable for."@en ;
+            rdfs:domain fashiono:FashionProduct ;
+            rdfs:range fashiono:season ;            
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:hasStyle a owl:ObjectProperty ;
+            rdfs:label "has style"@en ;
+            rdfs:comment "Relates a fashion product to its style."@en ;
+            rdfs:domain fashiono:FashionProduct ;
+            rdfs:range fashiono:style ; 
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:belongsToCollection a owl:ObjectProperty ;
+            rdfs:label "belongs to collection"@en ;
+            rdfs:comment "Relates a fashion product to the collection it belongs to."@en ;
+            rdfs:domain fashiono:FashionProduct ;
+            rdfs:range fashiono:collection ; 
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:hasReview a owl:ObjectProperty ;
+            rdfs:label "has review"@en ;
+            rdfs:comment "Relates a fashion product to its reviews."@en ;
+            rdfs:domain fashiono:FashionProduct ;
+            rdfs:range fashiono:Review ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:hasListing a owl:ObjectProperty ;
+            rdfs:label "has listing"@en ;
+            rdfs:comment "Relates a fashion product to its product listings."@en ;
+            rdfs:domain fashiono:FashionProduct ;
+            rdfs:range fashiono:productListing ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:WrittenBy a owl:ObjectProperty ;
+            rdfs:label "written by"@en ;
+            rdfs:comment "Relates a review to the customer who wrote it."@en ;
+            rdfs:domain fashiono:Review ;
+            rdfs:range fashiono:customer ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:includesProduct a owl:ObjectProperty ;
+            rdfs:label "includes product"@en ;
+            rdfs:comment "Relates an order to the fashion products included in it."@en ;
+            rdfs:domain fashiono:order ;
+            rdfs:range fashiono:FashionProduct ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:placedBy a owl:ObjectProperty ;
+            rdfs:label "placed by"@en ;
+            rdfs:comment "Relates an order to the customer who placed it."@en ;
+            rdfs:domain fashiono:order ;
+            rdfs:range fashiono:customer ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:collectionByBrand a owl:ObjectProperty ;
+            rdfs:label "collection by brand"@en ;
+            rdfs:comment "Relates a collection to the brand that created it."@en ;
+            rdfs:domain fashiono:collection ;
+            rdfs:range fashiono:Brand ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+    
+# Datatype Properties - Actual data values
+    
+    #product name is required - every product must have a name
+
+        fashiono:productName a owl:DatatypeProperty ;
+            rdfs:label "product name"@en ;
+            rdfs:comment "The name of the fashion product."@en ;
+            rdfs:domain fashiono:FashionProduct ;
+            rdfs:range xsd:string ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+    
+        fashiono:productDescription a owl:DatatypeProperty ;
+            rdfs:label "product description"@en ;
+            rdfs:comment "A detailed description of the fashion product."@en ;
+            rdfs:domain fashiono:FashionProduct ;
+            rdfs:range xsd:string ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        # Sku must be unique per product - so FunctionalProperty
+        
+        fashiono:sku a owl:DatatypeProperty ;
+            rdfs:label "SKU"@en ;
+            rdfs:comment "The Stock Keeping Unit, a unique identifier for the product."@en ;
+            rdfs:domain fashiono:FashionProduct ;
+            rdfs:range xsd:string ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:price a owl:DatatypeProperty ;
+            rdfs:label "price"@en ;
+            rdfs:comment "The price of the fashion product."@en ;
+            rdfs:domain fashiono:FashionProduct ;       
+            rdfs:range xsd:decimal ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:currency a owl:DatatypeProperty ;
+            rdfs:label "currency"@en ;
+            rdfs:comment "The currency of the price, represented as a 3-letter ISO code (e.g., USD, EUR)."@en ;
+            rdfs:domain fashiono:FashionProduct ;       
+            rdfs:range xsd:string ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:StockQuantity a owl:DatatypeProperty ;
+            rdfs:label "stock quantity"@en ;
+            rdfs:comment "The number of items available in stock for the fashion product."@en ;
+            rdfs:domain fashiono:FashionProduct ;       
+            rdfs:range xsd:integer ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:rating
+            a owl:DatatypeProperty ;
+            rdfs:label "rating"@en ;
+            rdfs:comment "The average rating of the fashion product, typically on a scale from 1 to 5."@en ;
+            rdfs:domain fashiono:FashionProduct ;       
+            rdfs:range xsd:decimal ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:reviewText
+            a owl:DatatypeProperty ;        
+            rdfs:label "review text"@en ;
+            rdfs:comment "The text of a review for a fashion product."@en ; 
+            rdfs:domain fashiono:Review ;
+            rdfs:range xsd:string ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:brandName a owl:DatatypeProperty ;
+            rdfs:label "brand name"@en ;
+            rdfs:comment "The name of the brand associated with a fashion product."@en ;
+            rdfs:domain fashiono:Brand ;
+            rdfs:range xsd:string ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+        fashiono:MaterialName a owl:DatatypeProperty ;
+            rdfs:label "material name"@en ;
+            rdfs:comment "The name of the material used in a fashion product."@en ;
+            rdfs:domain fashiono:Material ;
+            rdfs:range xsd:string ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:ColorName a owl:DatatypeProperty ;
+            rdfs:label "color name"@en ;
+            rdfs:comment "The name of the color of a fashion product."@en ;
+            rdfs:domain fashiono:Color ;
+            rdfs:range xsd:string ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:colorHexCode a owl:DatatypeProperty ;
+            rdfs:label "color hex code"@en ;
+            rdfs:comment "The hexadecimal color code representing the color of a fashion product."@en ;
+            rdfs:domain fashiono:Color ;
+            rdfs:range xsd:string ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:sizeLabel a owl:DatatypeProperty ;
+            rdfs:label "size label"@en ;
+            rdfs:comment "The label of the size for a fashion product, such as S, M, L, or numeric sizes like 4, 6, 8."@en ;
+            rdfs:domain fashiono:Size ;       
+            rdfs:range xsd:string ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+        
+        fashiono:collectionName a owl:DatatypeProperty ;
+            rdfs:label "collection name"@en ;
+            rdfs:comment "The name of a fashion collection."@en ;
+            rdfs:domain fashiono:collection ;       
+            rdfs:range xsd:string ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .    
+        
+        fashiono:collectionYear a owl:DatatypeProperty ;
+            rdfs:label "collection year"@en ;
+            rdfs:comment "The year a fashion collection was released."@en ;
+            rdfs:domain fashiono:collection ;       
+            rdfs:range xsd:gYear ;
+            rdfs:isDefinedBy <http://w3id.org/fashion> .
+
+# Name individaul=fixed vocabulary values
+
+# gender
+
+fashiono:women a fashiono:Gender ; rdfs:label "Women"@en .
+fashiono:men a fashiono:Gender   ; rdfs:label "Men"@en .
+fashiono:kids a fashiono:Gender   ; rdfs:label "Kids"@en .      
+fashiono:unisex a fashiono:Gender   ; rdfs:label "Unisex"@en .  
+fashiono:Girls a fashiono:Gender   ; rdfs:label "Girls"@en .    
+fashiono:Boys a fashiono:Gender   ; rdfs:label "Boys"@en .
+
+# season    
+fashiono:spring a fashiono:season ; rdfs:label "Spring"@en .
+fashiono:summer a fashiono:season ; rdfs:label "Summer"@en .
+fashiono:Autumn a fashiono:season ; rdfs:label "Autumn"@en .
+fashiono:winter a fashiono:season ; rdfs:label "Winter"@en .
+fashiono:allSeason a fashiono:season ; rdfs:label "All Season"@en .
+
+# style
+fashiono:casual a fashiono:style ; rdfs:label "Casual"@en .
+fashiono:formal a fashiono:style ; rdfs:label "Formal"@en .
+fashiono:business a fashiono:style ; rdfs:label "Business"@en .
+fashiono:party a fashiono:style ; rdfs:label "Party"@en .
+fashiono:sporty a fashiono:style ; rdfs:label "Sporty"@en .
+fashiono:vintage a fashiono:style ; rdfs:label "Vintage"@en .
+fashiono:streetwear a fashiono:style ; rdfs:label "Streetwear"@en .
+fashiono:bohemian a fashiono:style ; rdfs:label "Bohemian"@en .
+fashiono:beachwear a fashiono:style ; rdfs:label "Beachwear"@en .
+
+# common materials
+fashiono:cotton a fashiono:Material ; rdfs:label "Cotton"@en .
+fashiono:leather a fashiono:Material ; rdfs:label "Leather"@en .
+fashiono:polyester a fashiono:Material ; rdfs:label "Polyester"@en .
+fashiono:wool a fashiono:Material ; rdfs:label "Wool"@en .
+fashiono:denim a fashiono:Material ; rdfs:label "Denim"@en .
+fashiono:silk a fashiono:Material ; rdfs:label "Silk"@en .
+fashiono:linen a fashiono:Material ; rdfs:label "Linen"@en .
+fashiono:nylon a fashiono:Material ; rdfs:label "Nylon"@en .
+fashiono:rayon a fashiono:Material ; rdfs:label "Rayon"@en .        
+fashiono:cashmere a fashiono:Material ; rdfs:label "Cashmere"@en .
+fashiono:spandex a fashiono:Material ; rdfs:label "Spandex"@en .
+fashiono:chiffon a fashiono:Material ; rdfs:label "Chiffon"@en .
+
+#clothing sizes
+fashiono:XS a fashiono:ClothingSize ; rdfs:label "XS"@en .
+fashiono:S a fashiono:ClothingSize ; rdfs:label "S"@en .
+fashiono:M a fashiono:ClothingSize ; rdfs:label "M"@en .
+fashiono:L a fashiono:ClothingSize ; rdfs:label "L"@en .
+fashiono:XL a fashiono:ClothingSize ; rdfs:label "XL"@en .
+fashiono:XXL a fashiono:ClothingSize ; rdfs:label "XX   L"@en .     
